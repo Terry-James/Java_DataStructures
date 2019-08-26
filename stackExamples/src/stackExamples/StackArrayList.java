@@ -48,7 +48,7 @@ public class StackArrayList<T> implements StackInterface<T>{
 	public T top() throws StackUnderflowException {
 		T topStack;
 		if(isEmpty()) {
-			throw new StackUnderflowException("Invalid: Trying to pop from an empty stack.");
+			throw new StackUnderflowException("Invalid: Trying to get element from an empty stack.");
 		}
 		else {
 			topStack = list[index - 1];

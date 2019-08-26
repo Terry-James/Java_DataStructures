@@ -3,7 +3,9 @@ package stackExamples;
 public class TestDriver {
 	public static void main(String[] args) {
 		//testStackArray();
-		testStackArrayList();
+		//testStackArrayList();
+		//testLinkedList();
+		testLinkedStack();
 	}
 	
 	//A method to test that the StackArray class is working properly.
@@ -36,5 +38,32 @@ public class TestDriver {
 		stackList.pop(); // should remove John but not return
 		System.out.println(stackList.top()); // should remove Terry and return
 		
+	}
+	
+	public static void testLinkedList() {
+		LinkedList<String> currentNode = new LinkedList<>("Letters");
+		LinkedList<String> newNode = new LinkedList<>("Bills");
+		//currentNode.setLink(newNode); //Link after letters
+		newNode.setLink(currentNode); //Link before letters
+		currentNode = newNode;
+		while(currentNode != null) {
+			System.out.println(currentNode.getInfo());
+			currentNode = currentNode.getLink();
+		}
+
+	}
+	
+	public static void testLinkedStack() {
+		LinkStack<String> stack = new LinkStack<>();
+		
+		stack.push("Bill");
+		stack.push("Sam");
+		stack.push("Susan");
+		stack.push("Teddy");
+		
+		stack.pop();
+		System.out.println(stack.top());
+		stack.pop();
+		System.out.println(stack.top());
 	}
 }
