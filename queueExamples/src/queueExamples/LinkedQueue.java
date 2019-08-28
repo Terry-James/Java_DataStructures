@@ -1,8 +1,8 @@
 package queueExamples;
 
 public class LinkedQueue<T> implements QueueInterface<T> {
-	private int head = 0;
-	private int tail;
+	private LinkedList<T> head;
+	private LinkedList<T> tail;
 	private int numberOfElements = 0;
 	
 	LinkedQueue(){
@@ -10,33 +10,45 @@ public class LinkedQueue<T> implements QueueInterface<T> {
 		tail = null;
 	}
 
-	@Override
 	public void enqueue(T input) throws QueueOverflowException {
-		// TODO Auto-generated method stub
-		
+		LinkedList<T> newNode = new LinkedList<T>(input);
+		if(isEmpty()) {
+			head = newNode;
+		}
+		else {
+			tail.setLink(newNode);
+			tail = newNode;
+			numberOfElements++;
+		}
 	}
 
-	@Override
 	public T dequeue() throws QueueUnderflowException {
-		// TODO Auto-generated method stub
-		return null;
+		if(isEmpty()) {
+			throw new QueueUnderflowException("Invalid: Trying to dequeue and empty queue.");
+		}
+		else {
+			T result = head.getInfo();
+			head = head.getLink();
+			if(head == null) {
+				tail = null;
+			}
+			numberOfElements --;
+			return result;
+		}
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return numberOfElements;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return (tail == null && head == null);
 	}
 
 	@Override
 	public boolean isFull() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
