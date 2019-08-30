@@ -8,7 +8,7 @@ package stackExamples;
  * array has a limited capacity and doesn't get any bigger.
  */
 public class StackArray<T> implements StackInterface<T> {
-	private final int size = 10;
+	private int size = 10;
 	private T[] array;
 	private int index = 0;
 	
@@ -51,15 +51,14 @@ public class StackArray<T> implements StackInterface<T> {
 			throw new StackUnderflowException ("Invalid: Trying to remove from an empty stack.");
 		}
 		else {
-			topElement = array[index - 1];
-			index--;
+			topElement = array[index -1];
 		}
 		return topElement;
 	}
 
 	@Override
 	public boolean isFull() {
-		return (index == array.length - 1);
+		return (index == array.length);
 	}
 
 	@Override

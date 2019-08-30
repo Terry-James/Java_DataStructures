@@ -5,7 +5,42 @@ public class TestDriver {
 		//testStackArray();
 		//testStackArrayList();
 		//testLinkedList();
-		testLinkedStack();
+		//testLinkedStack();
+		
+		boolean result = testPalindromeWithStack("madamimadam");
+		System.out.println(result);
+	}
+	
+	public static boolean testPalindromeWithStack(String input) {
+		char letter;
+		int size = input.length();
+		StackArray<Character> myStack = new StackArray<>(size);
+		boolean isPalindrome = true;
+		
+		for(int i = 0; i < size; i++) {
+			letter = input.charAt(i);
+			if(Character.isLetter(letter)) {
+				myStack.push(letter);
+			}
+		}
+		
+		int index = 0;
+		while(isPalindrome) {
+			char ch = myStack.top();
+			letter = input.charAt(index);
+			if(ch != letter) {
+				return false;
+			}
+			else {
+				index++;
+				myStack.pop();
+				isPalindrome = true;
+				if(myStack.isEmpty()) {
+					isPalindrome = false;
+				}
+			}
+		}	
+		return true;
 	}
 	
 	//A method to test that the StackArray class is working properly.
