@@ -17,6 +17,7 @@ public class LinkedListLibrary {
 		
 		System.out.println(myList.get(3));		
 		System.out.println(myList.toString());
+		System.out.println(myList);
 
 	}
 
